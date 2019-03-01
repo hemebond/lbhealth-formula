@@ -23,7 +23,7 @@ The script can be configured to run behind a SystemD socket, e.g.:
 
 # /etc/systemd/system/lbhealth.socket
 [Unit]
-Description=ELB health check
+Description=LB health check
 
 [Socket]
 ListenStream=0.0.0.0:9000
@@ -34,7 +34,7 @@ WantedBy=sockets.target
 
 # /etc/systemd/system/lbhealth@.service
 [Unit]
-Description=ELB health check server
+Description=LB health check server
 Requires=lbhealth.socket
 
 [Service]
