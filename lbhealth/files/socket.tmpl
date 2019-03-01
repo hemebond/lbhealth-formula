@@ -1,0 +1,14 @@
+########################################################################
+# File managed by Salt at <{{ source }}>.
+# Your changes will be overwritten.
+########################################################################
+
+[Unit]
+Description=ELB health check
+
+[Socket]
+ListenStream={{ lbhealth.host }}:{{ lbhealth.port }}
+Accept=yes
+
+[Install]
+WantedBy=sockets.target

@@ -1,0 +1,21 @@
+########################################################################
+# File managed by Salt at <{{ source }}>.
+# Your changes will be overwritten.
+########################################################################
+
+[Unit]
+Description=LB health check server
+Requires=lbhealth.socket
+
+[Service]
+Type=simple
+WorkingDirectory={{ lbhealth.working_dir }}
+ExecStart={{ lbhealth.working_dir }}/lbhealth.py %i {% if 'config' in lbhealth %}--config {{ lbhealth.config }}{% endif %}
+StandardInput=socket
+StandardError=journal
+TimeoutStopSec=5
+
+PrivateTmp=yes
+
+[Install]
+WantedBy=multi-user.target
