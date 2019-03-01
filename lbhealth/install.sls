@@ -4,14 +4,14 @@ lbhealth Script:
   file.managed:
     - name: {{ lbhealth.working_dir }}/lbhealth.py
     - source: salt://lbhealth/files/lbhealth.py
-    - mode: 0755
+    - mode: "0755"
 
 lbhealth Socket File:
   file.managed:
     - name: /etc/systemd/system/{{ lbhealth.service.name }}.socket
     - source: salt://lbhealth/files/socket.tmpl
     - template: jinja
-    - mode: 0644
+    - mode: "0644"
     - defaults:
         lbhealth: {{ lbhealth | json }}
 
@@ -20,7 +20,7 @@ lbhealth Service File:
     - name: /etc/systemd/system/{{ lbhealth.service.name }}@.service
     - source: salt://lbhealth/files/service.tmpl
     - template: jinja
-    - mode: 0644
+    - mode: "0644"
     - defaults:
         lbhealth: {{ lbhealth | json }}
 lbhealth Service File (old):
